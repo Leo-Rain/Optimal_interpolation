@@ -19,7 +19,7 @@ and implemented in MATLAB.
  
  The algorithm was applied to assimilate observations to the wind field simulated for the Polar Arctic region.
  
-
+![EnOI work example for Arctic](https://github.com/AntonGusarov/oi_fusion/blob/master/Fields.jpg)
  
  ## 2. Mathematical model
  
