@@ -25,27 +25,25 @@ and implemented in MATLAB.
  
 ### Ensemble optimal interpolation
 
-Resulting correction ![equation](https://latex.codecogs.com/gif.latex?x_i%5E%7Ba%7D) can be expressed as a weighted linear combination 
-of the differences between observed and modeled time series 
-![equation](https://latex.codecogs.com/png.latex?%5CDelta_n%28%5Ctau%29%20%3D%20y_n%5E%7Bo%7D%28%5Ctau%29-Hx_n%5E%7Bb%7D%28%5Ctau%29) 
-added then to each grid point of the modeled (background) field ![equation](https://latex.codecogs.com/png.latex?x_i%5E%7Bb%7D):
+Resulting correction ![x_i^{a}](https://render.githubusercontent.com/render/math?math=x_i%5E%7Ba%7D) can be expressed as a weighted linear combination of the differences between observed and modeled time series 
+![\Delta_n(\tau) = y_n^{o}(\tau)-Hx_n^{b}(\tau) ](https://render.githubusercontent.com/render/math?math=%5CDelta_n(%5Ctau)%20%3D%20y_n%5E%7Bo%7D(%5Ctau)-Hx_n%5E%7Bb%7D(%5Ctau)%20) added then to each grid point of the modeled (background) field ![x_i^{b}](https://render.githubusercontent.com/render/math?math=x_i%5E%7Bb%7D):
 
-![equation](https://latex.codecogs.com/png.latex?x_i%5E%7Ba%7D%28t%29%20%3D%20x_i%5E%7Bb%7D%28t%29%20&plus;%20%5Csum_%7Bn%3D1%7D%5E%7BN%7D%20%5Csum_%7B%5Ctau%3Dt-T%7D%5E%7Bt&plus;T%7D%20w_n%5E%7B%28i%2Ct%29%7D%28%5Ctau%29%5CDelta_n%28%5Ctau%29)
+![x_i^{a}(t) = x_i^{b}(t) + \sum_{n=1}^{N} \sum_{\tau=t-T}^{t+T} w_n^{(i,t)}(\tau)\Delta_n(\tau)](https://render.githubusercontent.com/render/math?math=x_i%5E%7Ba%7D(t)%20%3D%20x_i%5E%7Bb%7D(t)%20%2B%20%5Csum_%7Bn%3D1%7D%5E%7BN%7D%20%5Csum_%7B%5Ctau%3Dt-T%7D%5E%7Bt%2BT%7D%20w_n%5E%7B(i%2Ct)%7D(%5Ctau)%5CDelta_n(%5Ctau))
 
 where:\
-![equation](https://latex.codecogs.com/png.latex?N) - number of observation points,\
-![equation](https://latex.codecogs.com/png.latex?t) - time instance of the background model,\
-![equation](https://latex.codecogs.com/png.latex?T) - maximum time lag that depends on the variability of the studied process.
+![N](https://render.githubusercontent.com/render/math?math=N)- number of observation points,\
+![t](https://render.githubusercontent.com/render/math?math=t) - time instance of the background model,\
+![T](https://render.githubusercontent.com/render/math?math=T) - maximum time lag that depends on the variability of the studied process.
 
 The conventional OI results in the Best Linear Unbiased Estimate (BLUE) ![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7Bx%7D%5E%7Ba%7D) of the true system state column vector 
 ![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7Bx%7D%5E%7Bt%7D) having available vector of observations ![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7By%7D%5E%7Bo%7D), 
 initial background field state vector ![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7Bx%7D%5E%7Bb%7D), and estimated error covariances:
 
-![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7Bx%7D%5E%7Ba%7D%3D%5Ctextbf%7Bx%7D%5E%7Bb%7D&plus;%5Ctextbf%7BK%7D%28%5Ctextbf%7By%7D%5E%7Bo%7D-%5Ctextbf%7BH%7D%5Ctextbf%7Bx%7D%5E%7Bb%7D%29)
+![\textbf{x}^{a}=\textbf{x}^{b}+\textbf{K}(\textbf{y}^{o}-\textbf{H}\textbf{x}^{b})](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7Bx%7D%5E%7Ba%7D%3D%5Ctextbf%7Bx%7D%5E%7Bb%7D%2B%5Ctextbf%7BK%7D(%5Ctextbf%7By%7D%5E%7Bo%7D-%5Ctextbf%7BH%7D%5Ctextbf%7Bx%7D%5E%7Bb%7D))
 
-![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7BK%7D%3D%5Ctextbf%7BP%7D%5E%7Bb%7D%5Ctextbf%7BH%7D%5E%7BT%7D%28%5Ctextbf%7BH%7D%5Ctextbf%7BP%7D%5Eb%5Ctextbf%7BH%7D%5E%7BT%7D&plus;%5Ctextbf%7BR%7D%29%5E%7B-1%7D)
+![\textbf{K}=\textbf{P}^{b}\textbf{H}^{T}(\textbf{H}\textbf{P}^b\textbf{H}^{T}+\textbf{R})^{-1}](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7BK%7D%3D%5Ctextbf%7BP%7D%5E%7Bb%7D%5Ctextbf%7BH%7D%5E%7BT%7D(%5Ctextbf%7BH%7D%5Ctextbf%7BP%7D%5Eb%5Ctextbf%7BH%7D%5E%7BT%7D%2B%5Ctextbf%7BR%7D)%5E%7B-1%7D)
 
 where:\
-![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7BP%7D%5Eb%20%3D%20%5Clangle%20%28%5Ctextbf%7Bx%7D%5Eb%20-%20%5Ctextbf%7Bx%7D%5Et%29%7B%28%5Ctextbf%7Bx%7D%5Eb%20-%20%5Ctextbf%7Bx%7D%5Et%29%7D%5ET%20%5Crangle%24%20and%20%24%5Ctextbf%7BR%7D%20%3D%20%5Clangle%20%28%5Ctextbf%7By%7D%5Eo%20-%20%5Ctextbf%7Bx%7D%5Et%29%7B%28%5Ctextbf%7By%7D%5Eo%20-%20%5Ctextbf%7Bx%7D%5Et%29%7D%5ET%20%5Crangle) are the matrices of estimated covariances of the background field and observation errors, respectively;\
+![\textbf{P}^b = \langle (\textbf{x}^b - \textbf{x}^t){(\textbf{x}^b - \textbf{x}^t)}^T \rangle](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7BP%7D%5Eb%20%3D%20%5Clangle%20(%5Ctextbf%7Bx%7D%5Eb%20-%20%5Ctextbf%7Bx%7D%5Et)%7B(%5Ctextbf%7Bx%7D%5Eb%20-%20%5Ctextbf%7Bx%7D%5Et)%7D%5ET%20%5Crangle) and ![\textbf{R} = \langle (\textbf{y}^o - \textbf{x}^t){(\textbf{y}^o - \textbf{x}^t)}^T \rangle](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7BR%7D%20%3D%20%5Clangle%20(%5Ctextbf%7By%7D%5Eo%20-%20%5Ctextbf%7Bx%7D%5Et)%7B(%5Ctextbf%7By%7D%5Eo%20-%20%5Ctextbf%7Bx%7D%5Et)%7D%5ET%20%5Crangle) are the matrices of estimated covariances of the background field and observation errors, respectively;\
 ![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7BH%7D) - the representation matrix of mapping observations onto the corresponding model grid;\
 ![equation](https://latex.codecogs.com/png.latex?%5Cmathbf%7BK%7D) - the weight matrix referred to as the Kalman gains, since the OI corresponds to the analysis stage of the Kalman filter. 
