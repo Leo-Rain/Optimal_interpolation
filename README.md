@@ -35,15 +35,21 @@ where:\
 ![t](https://render.githubusercontent.com/render/math?math=t) - time instance of the background model,\
 ![T](https://render.githubusercontent.com/render/math?math=T) - maximum time lag that depends on the variability of the studied process.
 
-The conventional OI results in the Best Linear Unbiased Estimate (BLUE) ![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7Bx%7D%5E%7Ba%7D) of the true system state column vector 
-![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7Bx%7D%5E%7Bt%7D) having available vector of observations ![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7By%7D%5E%7Bo%7D), 
-initial background field state vector ![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7Bx%7D%5E%7Bb%7D), and estimated error covariances:
+The conventional OI results in the Best Linear Unbiased Estimate (BLUE) ![\textbf{x}^{a}](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7Bx%7D%5E%7Ba%7D) of the true system state column vector 
+![$\textbf{x}^{t}$](https://render.githubusercontent.com/render/math?math=%24%5Ctextbf%7Bx%7D%5E%7Bt%7D%24) having available vector of observations ![\textbf{y}^{o}](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7By%7D%5E%7Bo%7D), 
+initial background field state vector ![\textbf{x}^{b}](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7Bx%7D%5E%7Bb%7D), and estimated error covariances:
 
 ![\textbf{x}^{a}=\textbf{x}^{b}+\textbf{K}(\textbf{y}^{o}-\textbf{H}\textbf{x}^{b})](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7Bx%7D%5E%7Ba%7D%3D%5Ctextbf%7Bx%7D%5E%7Bb%7D%2B%5Ctextbf%7BK%7D(%5Ctextbf%7By%7D%5E%7Bo%7D-%5Ctextbf%7BH%7D%5Ctextbf%7Bx%7D%5E%7Bb%7D))
 
 ![\textbf{K}=\textbf{P}^{b}\textbf{H}^{T}(\textbf{H}\textbf{P}^b\textbf{H}^{T}+\textbf{R})^{-1}](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7BK%7D%3D%5Ctextbf%7BP%7D%5E%7Bb%7D%5Ctextbf%7BH%7D%5E%7BT%7D(%5Ctextbf%7BH%7D%5Ctextbf%7BP%7D%5Eb%5Ctextbf%7BH%7D%5E%7BT%7D%2B%5Ctextbf%7BR%7D)%5E%7B-1%7D)
 
 where:\
-![\textbf{P}^b = \langle (\textbf{x}^b - \textbf{x}^t){(\textbf{x}^b - \textbf{x}^t)}^T \rangle](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7BP%7D%5Eb%20%3D%20%5Clangle%20(%5Ctextbf%7Bx%7D%5Eb%20-%20%5Ctextbf%7Bx%7D%5Et)%7B(%5Ctextbf%7Bx%7D%5Eb%20-%20%5Ctextbf%7Bx%7D%5Et)%7D%5ET%20%5Crangle) and ![\textbf{R} = \langle (\textbf{y}^o - \textbf{x}^t){(\textbf{y}^o - \textbf{x}^t)}^T \rangle](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7BR%7D%20%3D%20%5Clangle%20(%5Ctextbf%7By%7D%5Eo%20-%20%5Ctextbf%7Bx%7D%5Et)%7B(%5Ctextbf%7By%7D%5Eo%20-%20%5Ctextbf%7Bx%7D%5Et)%7D%5ET%20%5Crangle) are the matrices of estimated covariances of the background field and observation errors, respectively;\
-![equation](https://latex.codecogs.com/png.latex?%5Ctextbf%7BH%7D) - the representation matrix of mapping observations onto the corresponding model grid;\
-![equation](https://latex.codecogs.com/png.latex?%5Cmathbf%7BK%7D) - the weight matrix referred to as the Kalman gains, since the OI corresponds to the analysis stage of the Kalman filter. 
+![\textbf{P}^b = \langle (\textbf{x}^b - \textbf{x}^t){(\textbf{x}^b - \textbf{x}^t)}^T \rangle](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7BP%7D%5Eb%20%3D%20%5Clangle%20(%5Ctextbf%7Bx%7D%5Eb%20-%20%5Ctextbf%7Bx%7D%5Et)%7B(%5Ctextbf%7Bx%7D%5Eb%20-%20%5Ctextbf%7Bx%7D%5Et)%7D%5ET%20%5Crangle)
+
+and 
+
+![\textbf{R} = \langle (\textbf{y}^o - \textbf{x}^t){(\textbf{y}^o - \textbf{x}^t)}^T \rangle](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7BR%7D%20%3D%20%5Clangle%20(%5Ctextbf%7By%7D%5Eo%20-%20%5Ctextbf%7Bx%7D%5Et)%7B(%5Ctextbf%7By%7D%5Eo%20-%20%5Ctextbf%7Bx%7D%5Et)%7D%5ET%20%5Crangle) 
+
+are the matrices of estimated covariances of the background field and observation errors, respectively;\
+![\textbf{H}](https://render.githubusercontent.com/render/math?math=%5Ctextbf%7BH%7D) - the representation matrix of mapping observations onto the corresponding model grid;\
+![\mathbf{K}](https://render.githubusercontent.com/render/math?math=%5Cmathbf%7BK%7D) - the weight matrix referred to as the Kalman gains, since the OI corresponds to the analysis stage of the Kalman filter. 
